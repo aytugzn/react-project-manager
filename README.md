@@ -1,5 +1,5 @@
 # Project Manager
-A modern, responsive project and task management application built with React. Create projects, manage tasks, and stay organized with a clean and intuitive interface.
+A modern task management application built with React. Create projects, manage tasks, and stay organized with a clean and intuitive interface.
 ## ✨ Features
 
 - 📝 Project Management: Create, view, and delete projects
