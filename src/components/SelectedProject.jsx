@@ -1,6 +1,6 @@
 import { useState } from "react";
 import ProjectDetails from "./Selected_Project/ProjectDetails";
-import logo from "/logo.png";
+import NoProjectSelected from "./NoProjectSelected";
 
 export default function SelectedProject({
   children,
@@ -17,20 +17,18 @@ export default function SelectedProject({
 
   function handleClear(index) {
     setAllTasks((prev) => {
-      return { ...prev, [showProjectDetails.title]: prev[showProjectDetails.title].filter((_, i) => i !== index) };
+      return { ...prev, [showProjectDetails.id]: prev[showProjectDetails.id].filter((_, i) => i !== index) };
     });
   }
 
   function handleProjectDelete() {
     setAllTasks((prevTasks) => {
-      const { [showProjectDetails.title]: removed, ...remaining } = prevTasks;
+      const { [showProjectDetails.id]: removed, ...remaining } = prevTasks;
       return { ...remaining };
     });
 
     setProjects((prevProjects) => {
-      return prevProjects.filter(
-        (project) => project.title.trim().toLowerCase() !== showProjectDetails.title.trim().toLowerCase()
-      );
+      return prevProjects.filter((project) => project.id !== showProjectDetails.id);
     });
     setShowProjectDetails(null);
   }
@@ -65,21 +63,7 @@ export default function SelectedProject({
           {children}
         </div>
       )}
-      {!showForm && showProjectDetails === null && (
-        <>
-          <img src={logo} className="w-20 h-20" />
-          <h1 className="my-8 text-center text-3xl font-bold text-stone-600">No Project Selected</h1>
-          <p className="text-1xl text-stone-400 font-semibold text-[19px]">
-            Select a project or get started with a new one
-          </p>
-          <button
-            onClick={addProject}
-            className="m-10 p-3 px-4 bg-stone-800 text-stone-400 rounded-md text-[18px] hover:text-stone-300 cursor-pointer"
-          >
-            Create new project
-          </button>
-        </>
-      )}
+      {!showForm && showProjectDetails === null && <NoProjectSelected addProject={addProject} />}
       {!showForm && showProjectDetails !== null && (
         <ProjectDetails
           showProjectDetails={showProjectDetails}

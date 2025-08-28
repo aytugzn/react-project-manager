@@ -15,7 +15,7 @@ export default function AsideBar({ addProject, projects, handleProjectSelect }) 
             return (
               <li key={project.title + index} className="flex">
                 <button
-                  id={project.title.toLowerCase().replace(/\s+/g, "")}
+                  id={project.id}
                   onClick={handleProjectSelect}
                   className="m-1 py-2 px-3 w-[100%] hover:bg-stone-800 text-start text-[18px] rounded"
                 >

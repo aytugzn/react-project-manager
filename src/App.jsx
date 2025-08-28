@@ -6,13 +6,13 @@ import SelectedProject from "./components/SelectedProject";
 
 function App() {
   const [showProjectDetails, setShowProjectDetails] = useState(null);
-
   const [showForm, setShowForm] = useState(false);
   const [projects, setProjects] = useState([]);
   const [newProject, setNewProject] = useState({
     title: "",
     description: "",
     due_date: "",
+    id: "",
   });
 
   function addProjectButton() {
@@ -43,43 +43,43 @@ function App() {
   function applyProjectAdd() {
     const { title, description, due_date } = newProject;
     if (!title || !description || !due_date) return;
+    const projectWithId = { ...newProject, id: Date.now() };
     setProjects((prevProjects) => {
-      return [...prevProjects, newProject];
+      return [...prevProjects, projectWithId];
     });
     setNewProject({
       title: "",
       description: "",
       due_date: "",
+      id: "",
     });
     setShowForm(false);
   }
 
   function handleProjectSelect(event) {
-    const project = projects.find((project) => project.title.toLowerCase().replace(/\s+/g, "") === event.target.id);
+    const project = projects.find((project) => project.id === Number(event.target.id));
     setShowProjectDetails(project);
     setShowForm(false);
   }
 
   return (
-    <>
-      <div className="flex">
-        <AsideBar handleProjectSelect={handleProjectSelect} addProject={addProjectButton} projects={projects} />
+    <div className="flex">
+      <AsideBar handleProjectSelect={handleProjectSelect} addProject={addProjectButton} projects={projects} />
 
-        <SelectedProject
-          showProjectDetails={showProjectDetails}
-          setShowProjectDetails={setShowProjectDetails}
-          addProject={addProjectButton}
-          cancelProject={cancelProjectAdd}
-          saveProject={applyProjectAdd}
-          showForm={showForm}
-          setProjects={setProjects}
-        >
-          <AddProject handleChange={handleChange} inputPref={"input"} title="Title" type="text" />
-          <AddProject handleChange={handleChange} inputPref={"textarea"} title="Description" />
-          <AddProject handleChange={handleChange} inputPref={"input"} title="Due Date" type="date" />
-        </SelectedProject>
-      </div>
-    </>
+      <SelectedProject
+        showProjectDetails={showProjectDetails}
+        setShowProjectDetails={setShowProjectDetails}
+        addProject={addProjectButton}
+        cancelProject={cancelProjectAdd}
+        saveProject={applyProjectAdd}
+        showForm={showForm}
+        setProjects={setProjects}
+      >
+        <AddProject handleChange={handleChange} title="Title" type="text" />
+        <AddProject handleChange={handleChange} textarea title="Description" />
+        <AddProject handleChange={handleChange} title="Due Date" type="date" />
+      </SelectedProject>
+    </div>
   );
 }
 

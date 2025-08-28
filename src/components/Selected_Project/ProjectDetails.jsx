@@ -8,12 +8,13 @@ export default function ProjectDetails({
   setAllTasks,
   handleClear,
 }) {
+  console.log(showProjectDetails);
   const [inputValue, setInputValue] = useState("");
 
   function handleTaskAdd() {
     if (!inputValue.trim()) return;
     setAllTasks((prev) => {
-      return { ...prev, [showProjectDetails.title]: [...(prev[showProjectDetails.title] || []), inputValue] };
+      return { ...prev, [showProjectDetails.id]: [...(prev[showProjectDetails.id] || []), inputValue] };
     });
     setInputValue("");
   }
@@ -47,11 +48,11 @@ export default function ProjectDetails({
         </button>
       </div>
 
-      {!allTasks?.[showProjectDetails.title]?.length && (
+      {!allTasks?.[showProjectDetails.id]?.length && (
         <p className="text-[19px]">This project does not have any tasks yet.</p>
       )}
 
-      {allTasks?.[showProjectDetails.title]?.length > 0 && (
+      {allTasks?.[showProjectDetails.id]?.length > 0 && (
         <Tasks allTasks={allTasks} project={showProjectDetails} handleClear={handleClear} />
       )}
     </div>

@@ -1,5 +1,7 @@
 # Project Manager
-A modern, responsive project and task management application built with React. Create projects, manage tasks, and stay organized with a clean and intuitive interface.
+
+A modern task management application built with React. Create projects, manage tasks, and stay organized with a clean and intuitive interface.
+
 ## ✨ Features
 
 - 📝 Project Management: Create, view, and delete projects
@@ -7,50 +9,56 @@ A modern, responsive project and task management application built with React. C
 - 📅 Due Date Tracking: Set and display project deadlines
 - 🎨 Clean UI: Modern design with Tailwind CSS
 
-# 🛠️ Tech Stack
+## 🛠️ Tech Stack
 
 - Frontend: React 18
 - Styling: Tailwind CSS
 - Build Tool: Vite
 - Language: JavaScript (ES6+)
 
-# 🚀 Quick Start
-## Prerequisites
+## 🚀 Quick Start
+
+### Prerequisites
 
 Node.js (v16 or higher)
 npm or yarn
 
-## Installation
+### Installation
 
 1. Clone the repository
+
 ```bash
 git clone https://github.com/aytugzn/react-project-manager.git
 cd react-project-manager
 ```
 
 2. Install dependencies
+
 ```bash
 npm install
 ```
 
 3. Start development server
+
 ```bash
 npm run dev
 ```
 
 4. Open in browser
+
 ```bash
 http://localhost:5173
 ```
 
-# 📦 Build for Production
+## 📦 Build for Production
+
 ```bash
 npm run build
 ```
 
 The built files will be in the dist/ directory.
 
-# 🎯 How to Use
+## 🎯 How to Use
 
 1. Create a Project: Click "Add Project" and fill in the project details
 2. Select Project: Click on any project from the sidebar to view details
@@ -58,13 +66,14 @@ The built files will be in the dist/ directory.
 4. Manage Tasks: Click "Clear" to remove completed tasks
 5. Delete Projects: Use the delete button to remove projects you no longer need
 
-# 🔧 Available Scripts
+## 🔧 Available Scripts
 
-`npm run dev` - Start development server
-`npm run build` - Build for production
-`npm run preview` - Preview production build locally
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build locally
 
-# 📝 Learning Journey
+## 📝 Learning Journey
+
 This project was built as part of my React learning journey. Key concepts implemented:
 
 - React Hooks (useState)
@@ -74,5 +83,10 @@ This project was built as part of my React learning journey. Key concepts implem
 - Event handling
 - Form handling and validation
 
-# 🤝 Contributing
+## 🌐 Live Demo
+
+Check out the live version of this project here: [View Live Demo](https://react-project-manager-kljpicjhn-aytugzns-projects.vercel.app/)
+
+## 🤝 Contributing
+
 This is a personal learning project that was inspired by Maximilian's course project, but feedback and suggestions are always welcome!

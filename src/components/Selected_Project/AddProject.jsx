@@ -1,11 +1,9 @@
-export default function AddProject({ inputPref, title, type, handleChange }) {
-  const Input = inputPref;
-
+export default function AddProject({ title, type, handleChange, textarea }) {
   return (
     <>
       <label className="my-8 text-start text-3xl font-bold text-stone-600">{title}</label>
-      {Input === "textarea" ? (
-        <Input
+      {textarea ? (
+        <textarea
           onChange={handleChange}
           name={title.toLowerCase().replace(/\s+/g, "_")}
           style={{
@@ -17,9 +15,9 @@ export default function AddProject({ inputPref, title, type, handleChange }) {
             padding: "10px",
           }}
           required
-        ></Input>
+        ></textarea>
       ) : (
-        <Input
+        <input
           onChange={handleChange}
           name={title.toLowerCase().replace(/\s+/g, "_")}
           style={{
