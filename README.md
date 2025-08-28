@@ -75,7 +75,7 @@ This project was built as part of my React learning journey. Key concepts implem
 - Form handling and validation
 
 # 🌐 Live Demo
-Check out the live version of this project here: [View Live Demo]([https://your-project-link.vercel.app](https://react-project-manager-kljpicjhn-aytugzns-projects.vercel.app/))
+Check out the live version of this project here: [View Live Demo]([https://react-project-manager-kljpicjhn-aytugzns-projects.vercel.app/])
 
 
 # 🤝 Contributing
