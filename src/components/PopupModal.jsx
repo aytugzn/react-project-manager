@@ -3,14 +3,14 @@ import clsx from "clsx";
 export default function PopupModal({ color, isTrue, handlePopup, children }) {
   const colorMap = {
     red: {
-      border: "border-red-700",
-      bg: "bg-red-300",
-      text: "text-red-700",
+      border: "border-red-600",
+      bg: "bg-red-200",
+      text: "text-red-600",
     },
     green: {
-      border: "border-green-700",
-      bg: "bg-green-300",
-      text: "text-green-700",
+      border: "border-green-600",
+      bg: "bg-green-200",
+      text: "text-green-600",
     },
   };
 

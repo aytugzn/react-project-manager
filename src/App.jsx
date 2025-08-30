@@ -76,6 +76,7 @@ function App() {
         showForm={showForm}
         setProjects={setProjects}
         invalid={invalid}
+        setInvalid={setInvalid}
         handlePopup={handlePopup}
       >
         <AddProject handleChange={handleChange} title="Title" type="text" />

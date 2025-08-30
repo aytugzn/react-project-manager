@@ -14,6 +14,7 @@ export default function SelectedProject({
   setProjects,
   setShowProjectDetails,
   invalid,
+  setInvalid,
   handlePopup,
 }) {
   const [allTasks, setAllTasks] = useState({});
@@ -79,6 +80,9 @@ export default function SelectedProject({
           allTasks={allTasks}
           setAllTasks={setAllTasks}
           handleClear={handleClear}
+          invalid={invalid}
+          setInvalid={setInvalid}
+          handlePopup={handlePopup}
         />
       )}
     </main>

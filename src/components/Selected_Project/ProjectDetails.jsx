@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Tasks from "./Tasks";
+import PopupModal from "../PopupModal";
 
 export default function ProjectDetails({
   showProjectDetails,
@@ -7,6 +8,9 @@ export default function ProjectDetails({
   allTasks,
   setAllTasks,
   handleClear,
+  invalid,
+  setInvalid,
+  handlePopup,
 }) {
   const [inputValue, setInputValue] = useState("");
 
@@ -17,7 +21,13 @@ export default function ProjectDetails({
   });
 
   function handleTaskAdd() {
-    if (!inputValue.trim()) return;
+    if (!inputValue.trim()) {
+      setInvalid(true);
+      setTimeout(() => {
+        setInvalid(false);
+      }, 2000);
+      return;
+    }
     setAllTasks((prev) => {
       return { ...prev, [showProjectDetails.id]: [...(prev[showProjectDetails.id] || []), inputValue] };
     });
@@ -54,11 +64,23 @@ export default function ProjectDetails({
       </div>
 
       {!allTasks?.[showProjectDetails.id]?.length && (
-        <p className="text-[19px]">This project does not have any tasks yet.</p>
+        <>
+          <p className="text-[19px] mb-4">This project does not have any tasks yet.</p>
+          <PopupModal color={"red"} isTrue={invalid} handlePopup={handlePopup}>
+            Task cannot be empty!
+          </PopupModal>
+        </>
       )}
 
       {allTasks?.[showProjectDetails.id]?.length > 0 && (
-        <Tasks allTasks={allTasks} project={showProjectDetails} handleClear={handleClear} />
+        <Tasks
+          allTasks={allTasks}
+          project={showProjectDetails}
+          handleClear={handleClear}
+          color={"red"}
+          isTrue={invalid}
+          handlePopup={handlePopup}
+        />
       )}
     </div>
   );
