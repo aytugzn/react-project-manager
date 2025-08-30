@@ -8,6 +8,7 @@ function App() {
   const [showProjectDetails, setShowProjectDetails] = useState(null);
   const [showForm, setShowForm] = useState(false);
   const [projects, setProjects] = useState([]);
+  const [invalid, setInvalid] = useState(false);
   const [newProject, setNewProject] = useState({
     title: "",
     description: "",
@@ -21,6 +22,10 @@ function App() {
 
   function cancelProjectAdd() {
     setShowForm(false);
+  }
+
+  function handlePopup() {
+    setInvalid(false);
   }
 
   function handleChange(event) {
@@ -42,7 +47,13 @@ function App() {
 
   function applyProjectAdd() {
     const { title, description, due_date } = newProject;
-    if (!title || !description || !due_date) return;
+    if (!title || !description || !due_date || title.trim() === "" || description.trim() === "") {
+      setInvalid(true);
+      setTimeout(() => {
+        setInvalid(false);
+      }, 3000);
+      return;
+    }
     const projectWithId = { ...newProject, id: Date.now() };
     setProjects((prevProjects) => {
       return [...prevProjects, projectWithId];
@@ -74,6 +85,8 @@ function App() {
         saveProject={applyProjectAdd}
         showForm={showForm}
         setProjects={setProjects}
+        invalid={invalid}
+        handlePopup={handlePopup}
       >
         <AddProject handleChange={handleChange} title="Title" type="text" />
         <AddProject handleChange={handleChange} textarea title="Description" />
