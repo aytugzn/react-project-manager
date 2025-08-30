@@ -65,7 +65,7 @@ function App() {
 
   return (
     <div className="flex">
-      <AsideBar handleProjectSelect={handleProjectSelect} addProject={addProjectButton} projects={projects} />
+      <AsideBar selectedProject={showProjectDetails} handleProjectSelect={handleProjectSelect} addProject={addProjectButton} projects={projects} />
 
       <SelectedProject
         showProjectDetails={showProjectDetails}
