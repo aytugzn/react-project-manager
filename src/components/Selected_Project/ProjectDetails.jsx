@@ -8,8 +8,13 @@ export default function ProjectDetails({
   setAllTasks,
   handleClear,
 }) {
-  console.log(showProjectDetails);
   const [inputValue, setInputValue] = useState("");
+
+  const formattedDate = new Date(showProjectDetails.due_date).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
 
   function handleTaskAdd() {
     if (!inputValue.trim()) return;
@@ -32,7 +37,7 @@ export default function ProjectDetails({
           Delete
         </button>
       </div>
-      <p className="text-[19px] text-stone-400 mb-1">{showProjectDetails.due_date}</p>
+      <p className="text-[19px] text-stone-400 mb-1">{formattedDate}</p>
       <p className="whitespace-pre-wrap text-[19px] text-stone-700">{showProjectDetails.description}</p>
       <hr className=" border-stone-300 my-3 " />
       <h3 className="text-2xl font-bold text-stone-700">Tasks</h3>
